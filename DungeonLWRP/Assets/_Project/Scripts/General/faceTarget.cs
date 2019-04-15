@@ -8,7 +8,7 @@ public class faceTarget : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        target = GameObject.Find("Floor").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
     }
 	
 	// Update is called once per frame

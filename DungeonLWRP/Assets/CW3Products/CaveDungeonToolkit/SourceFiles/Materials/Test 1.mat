@@ -6,21 +6,22 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DungeonWallBrickLarge
-  m_Shader: {fileID: 4800000, guid: c326d4688492ced488a2182347df5084, type: 3}
-  m_ShaderKeywords: _NORMALMAP _PARALLAXMAP
-  m_LightmapFlags: 5
+  m_Name: Test 1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BlendDiffuse:
-        m_Texture: {fileID: 2800000, guid: ab7ff7894ce89ba4b9d1c9d1033b3250, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _BlendDiffuse2:
         m_Texture: {fileID: 2800000, guid: e2b4fff7d4c245b4b9236a2bfe16abcc, type: 3}
@@ -28,15 +29,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BlendNormal:
         m_Texture: {fileID: 2800000, guid: 6b7937d4865d0a2488ac42bb8ea068f8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 8, y: 8}
         m_Offset: {x: 0, y: 0}
     - _BlendNormal2:
         m_Texture: {fileID: 2800000, guid: fea0ffc4b57a10549bc5ca98741d7ea4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f22826afc44cbd94cb36f1c5ca256dcc, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedo:
+        m_Texture: {fileID: 2800000, guid: 5290612c8d8c6fc40aebdcadfebd50ab, type: 3}
+        m_Scale: {x: 11, y: 11}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -46,6 +51,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailNormal:
+        m_Texture: {fileID: 2800000, guid: 00b9c98dd60f0a849881b6c2cdb776d7, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: -0.05, y: -0.03}
     - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,15 +64,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Heightmap:
-        m_Texture: {fileID: 2800000, guid: 2c309ae8607bba241aa18da299955384, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89dc7fa6bbadb4048afa50c695549d20, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cee08d43108113b46be310e4338947b4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: ca4c8f7230365fe47bf5d03143167423, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3126557e9db29b439c3e166ab72ff17, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -75,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: b7519b1e55fdb914a9fe1eb8cbfbbce9, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -83,33 +92,48 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AOBoost: 0
-    - _AOStrength: 0.13
-    - _BlendDiffuseScale: 8
-    - _BlendMaskIntensity: 0.565
-    - _BlendUpFactor: 0.213
+    - _AOStrength: 0.56
+    - _AmbientBoost: 0
+    - _AtlasIndex: 2
+    - _BlendDiffuseScale: 25.15
+    - _BlendMaskIntensity: 0.559
+    - _BlendUpFactor: 0.289
     - _BumpScale: 1
     - _Cutoff: 0
     - _DetailNormalMapScale: 1
+    - _DetailNormalStrength: 0
     - _DirectionalInfluence: -0.12
-    - _Displacement: 0.5
-    - _DstBlend: 0
-    - _EdgeLength: 2
-    - _Glossiness: 0.47
+    - _DirectionalIntensity: 0
+    - _DirectionalIntensityNormal: 1
+    - _DirectionalIntensityOverlay: 0
+    - _DirectionalIntesnityNormal: 1
+    - _Displacement: 0.207
+    - _DstBlend: 10
+    - _EdgeLength: 19.3
+    - _GlossMapScale: 1
+    - _Glossiness: 0.38
+    - _GlossyReflections: 1
+    - _IsIce: 0
     - _Metalic: 0
-    - _Metallic: 1
-    - _Mode: 0
+    - _Metallic: 0
+    - _Mode: 2
     - _OcclusionStrength: 1
-    - _Parallax: 0.433
+    - _OverlayIntensity: 0.439
+    - _Parallax: 0.005
     - _Shininess: 0.26
-    - _SrcBlend: 1
-    - _TessMidPoint: 0.4
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 5
+    - _TessMidPoint: 0.74
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     - __dirty: 0
+    - _node_7130: 8
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.6911764, g: 0.18804064, b: 0.18804064, a: 0.184}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.13235295, g: 0.13235295, b: 0.13235295, a: 1}
+    - _TilemapLocation: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.7352978, g: 0.7352978, b: 0.7352978, a: 1}
-    - _TintColor2: {r: 0.75735295, g: 0.7393658, b: 0.66268384, a: 1}
+    - _TintColor2: {r: 0.7647059, g: 0.73961455, b: 0.6634948, a: 1}
+    - _node_2099: {r: 0.9375, g: 0.015625, b: 0.015625, a: 0}

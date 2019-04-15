@@ -8,11 +8,13 @@ public class earthLaser : MonoBehaviour {
     [SerializeField]
     List<Tile> allTiles = new List<Tile>();
 
-    alienController currentAlien;
+    goblinController currentGoblin;
 
     Tile greenTile;
     Tile blueTile;
     Tile redTile;
+
+    public GameObject target;
 
     void Start () {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
@@ -76,17 +78,16 @@ public class earthLaser : MonoBehaviour {
     //hit the closest alien with a laser
     void fireLaser(Tile.States state)
     {
-        if (currentAlien != null)
+        if (currentGoblin != null)
         {
-            currentAlien.TakeHit(state);
+            currentGoblin.TakeHit(state);
         }
 
     }
 
-    public void setCurrentAlien(alienController aC)
+    public void setCurrentGoblin(goblinController aC)
     {
-        currentAlien = aC;
-
+        currentGoblin = aC;
     }
 
 }
