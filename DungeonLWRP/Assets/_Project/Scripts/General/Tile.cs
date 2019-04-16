@@ -18,6 +18,9 @@ public class Tile : MonoBehaviour {
     public bool flipped = false;
     public bool hitFrame = false;
 
+    [SerializeField]
+    noteController note;
+
     // Use this for initialization
     void Start () {
         rend = GetComponent<MeshRenderer>();
@@ -28,6 +31,7 @@ public class Tile : MonoBehaviour {
         updateMaterial();
         checkForPlayerOnFlip();
         checkForPlayerOnMole();
+        checkForPlayerHit();
 	}
 
     /*
@@ -70,6 +74,25 @@ public class Tile : MonoBehaviour {
             myState = States.SELECTOR;
         }
 
+        if(other.tag == "note")
+        {
+            if (myState != States.NOTEBAROFF)
+            {
+                myState = States.NOTE;
+            }
+            else
+            {
+                myState = States.NOTEBARON;
+                note = other.GetComponent<noteController>();
+
+            }
+        }
+        if (other.tag == "notebar")
+        {
+            myState = States.NOTEBAROFF;
+        }
+
+
     }
     
     private void OnTriggerExit(Collider other)
@@ -88,7 +111,18 @@ public class Tile : MonoBehaviour {
         {
             myState = States.NONE;
         }
-
+        if (other.tag == "note")
+        {
+                if (myState != States.NOTEBARON)
+                {
+                    myState = States.NONE;
+                }
+                else
+                {
+                    myState = States.NOTEBAROFF;
+                    note = null;
+                }
+        }
     }
 
 
@@ -176,6 +210,28 @@ public class Tile : MonoBehaviour {
         {
             myState = States.NONE;
         }
+    }
+
+    private void playerHit()
+    {
+        
+        if(note != null)
+        {
+            print("notehit");
+            note.strikeNote();
+            //coroutine that flashes the tile and then returns it to a notebar status
+            StartCoroutine("NoteHitFeedback");
+
+        }
+    }
+
+    private void checkForPlayerHit()
+    {
+        if (lastFramePlayerHere == false && playerHere == true)
+        {
+            playerHit();
+        }
+        lastFramePlayerHere = playerHere;
     }
 
     IEnumerator NoteHitFeedback()

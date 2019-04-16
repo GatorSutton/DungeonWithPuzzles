@@ -8,10 +8,10 @@ public class whackamoleController : MonoBehaviour {
     Floor floor;
 
     List<Tile> allTiles = new List<Tile>();
-    public goblinController goblinPrefab;
+    public alienController alienPrefab;
     [SerializeField]
-    List<goblinController> allGoblins = new List<goblinController>();
-    int goblinCount = 0;
+    List<alienController> allAliens = new List<alienController>();
+    int alienCount = 0;
     public earthLaser eL;
 
 
@@ -23,19 +23,19 @@ public class whackamoleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //detect first goblin spawn
-        if(goblinCount == 0 && allGoblins.Count == 1)
+        
+        if(alienCount == 0 && allAliens.Count == 1)
         {
-            eL.setCurrentGoblin(allGoblins[0]);
-        }
-        //detect when goblin has died
-        if(allGoblins.Count > 0 && !allGoblins[0].isAlive)
-        {
-            allGoblins.RemoveAt(0);
-            if (allGoblins.Count != 0) { eL.setCurrentGoblin(allGoblins[0]); }
+            eL.setCurrentAlien(allAliens[0]);
         }
 
-        goblinCount = allGoblins.Count;
+        if(allAliens.Count > 0 && !allAliens[0].isAlive)
+        {
+            allAliens.RemoveAt(0);
+            if (allAliens.Count != 0) { eL.setCurrentAlien(allAliens[0]); }
+        }
+
+        alienCount = allAliens.Count;
 	}
 
     //add script in inspector to add strings for different get ready messages
@@ -43,32 +43,46 @@ public class whackamoleController : MonoBehaviour {
     IEnumerator playRound()
     {
         //yield return getReady()
-        yield return spawnGoblins();
+        yield return spawnMoles();
     }
 
-    IEnumerator spawnGoblins()
+    IEnumerator spawnMoles()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
-            yield return new WaitForSeconds(7f);
-            spawnRandomGoblins();
+            yield return new WaitForSeconds(3f);
+            spawnRandomMoles(2);
         }
 
         
         for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(4f);
-            spawnRandomGoblins();
+            yield return new WaitForSeconds(2f);
+            spawnRandomMoles(3);
+        } 
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(1f);
+            spawnRandomMoles(4);
         }
-        yield return new WaitForSeconds(10f);
+
+        yield return new WaitForSeconds(5f);
+        /*
+        
+        for (int i = 0; i < 25; i++)
+        {
+            yield return new WaitForSeconds(.1f);
+            spawnRandomMoles(1);
+        }
+        */
 
         yield return null;
     }
 
-    void spawnRandomGoblins()
+    void spawnRandomMoles(int count)
     {
-        goblinController goblin = Instantiate(goblinPrefab);
-        allGoblins.Add(goblin);
+        alienController alien = Instantiate(alienPrefab, this.transform);
+        allAliens.Add(alien);
     }
 
 }

@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: IceFreeformRock
-  m_Shader: {fileID: 4800000, guid: 0c385731f972c5643974518eed55e1e1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8df7a30eaed4d424fb01e51ae3e9ebbb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -38,19 +38,11 @@ Material:
         m_Texture: {fileID: 2800000, guid: 98eb89ef4c5560c408e94c1aa085a8fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailAlbedo:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormal:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -94,10 +86,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _texcoord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BlendDiffuseScale: 8
     - _BlendMaskIntensity: 0.301
@@ -105,26 +93,19 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DetailNormalStrength: 0
     - _Displacement: 0.03
     - _DstBlend: 0
     - _EdgeLength: 16.3
-    - _Gloss: 0.8
-    - _Glossiness: 0.701
-    - _MaskClipValue: 0.5
-    - _Metalic: 0
+    - _Glossiness: 0.844
     - _Metallic: 0
     - _Mode: 0
     - _NormalScale: 0.517
     - _OcclusionStrength: 1
-    - _OverlayIntensity: 0
     - _Parallax: 0.02
     - _SrcBlend: 1
     - _TessMidPoint: 0.7
     - _UVSec: 0
-    - _UseAlpha: 1
     - _ZWrite: 1
-    - __dirty: 0
     - _node_6337: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,4 +115,3 @@ Material:
     - _TintColor2: {r: 0.7352978, g: 0.7352978, b: 0.7352978, a: 1}
     - _TintlessColor: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
     - _UVScalar: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _UcScalar: {r: 0.5, g: 0.5, b: 0, a: 0}
