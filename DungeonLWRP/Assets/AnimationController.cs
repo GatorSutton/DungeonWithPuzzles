@@ -20,6 +20,11 @@ public class AnimationController : MonoBehaviour {
             print("space was pressed");
             animator.enabled = !animator.enabled;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            animator.speed = (animator.speed == 1) ? animator.speed = 10 : animator.speed = 1;
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
