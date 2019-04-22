@@ -8,15 +8,18 @@ public class whackamoleController : MonoBehaviour {
     Floor floor;
 
     List<Tile> allTiles = new List<Tile>();
-    public alienController alienPrefab;
+    public alienController goblinPrefab;
     [SerializeField]
-    List<alienController> allAliens = new List<alienController>();
-    int alienCount = 0;
+    List<alienController> allGoblins = new List<alienController>();
+    int goblinCount = 0;
     public earthLaser eL;
+
+    PuzzleEvents pE;
 
 
     // Use this for initialization
     void Start () {
+        pE = GetComponent<PuzzleEvents>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         StartCoroutine(playRound());
     }
@@ -24,18 +27,18 @@ public class whackamoleController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if(alienCount == 0 && allAliens.Count == 1)
+        if(goblinCount == 0 && allGoblins.Count == 1)
         {
-            eL.setCurrentAlien(allAliens[0]);
+            eL.setCurrentAlien(allGoblins[0]);
         }
 
-        if(allAliens.Count > 0 && !allAliens[0].isAlive)
+        if(allGoblins.Count > 0 && !allGoblins[0].isAlive)
         {
-            allAliens.RemoveAt(0);
-            if (allAliens.Count != 0) { eL.setCurrentAlien(allAliens[0]); }
+            allGoblins.RemoveAt(0);
+            if (allGoblins.Count != 0) { eL.setCurrentAlien(allGoblins[0]); }
         }
 
-        alienCount = allAliens.Count;
+        goblinCount = allGoblins.Count;
 	}
 
     //add script in inspector to add strings for different get ready messages
@@ -48,41 +51,41 @@ public class whackamoleController : MonoBehaviour {
 
     IEnumerator spawnMoles()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(3f);
             spawnRandomMoles(2);
         }
-
         
-        for (int i = 0; i < 5; i++)
+        
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(2f);
             spawnRandomMoles(3);
         } 
-        for (int i = 0; i < 5; i++)
-        {
-            yield return new WaitForSeconds(1f);
-            spawnRandomMoles(4);
-        }
+        yield return new WaitForSeconds(20f);
 
-        yield return new WaitForSeconds(5f);
-        /*
+        pE.PuzzleSolved();
         
-        for (int i = 0; i < 25; i++)
-        {
-            yield return new WaitForSeconds(.1f);
-            spawnRandomMoles(1);
-        }
-        */
-
         yield return null;
     }
 
     void spawnRandomMoles(int count)
     {
-        alienController alien = Instantiate(alienPrefab, this.transform);
-        allAliens.Add(alien);
+        alienController goblin = Instantiate(goblinPrefab);
+        goblin.setWhackAMoleController(this);
+        allGoblins.Add(goblin);
+    }
+
+
+    public void restartPuzzle()
+    {
+        for (int i = 0; i < allGoblins.Count; i++)
+        {
+            Destroy(allGoblins[i].gameObject);
+        }
+        StopAllCoroutines();
+        StartCoroutine(playRound());
     }
 
 }

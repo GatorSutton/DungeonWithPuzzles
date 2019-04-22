@@ -19,9 +19,8 @@ public class alienController : MonoBehaviour {
     List<Tile.States> listOfShields = new List<Tile.States>();
     int currentShield = 2;
     public bool isAlive = true;
-
+    whackamoleController wamC;
     public MeshRenderer mr;
-
 
     // Use this for initialization
     void Start () {
@@ -76,5 +75,19 @@ public class alienController : MonoBehaviour {
                 break;
         }
     }
+
+    void playerLose()
+    {
+        Debug.Log("restart puzzle");
+        wamC.restartPuzzle();
+    }
+
+
+    public void setWhackAMoleController(whackamoleController wamController)
+    {
+        wamC = wamController;
+    }
+
+
 
 }
