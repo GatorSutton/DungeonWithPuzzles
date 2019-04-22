@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LavaFallShader
-  m_Shader: {fileID: 4800000, guid: ecf275568a90bd4418b4f0073ace0b20, type: 3}
+  m_Name: FogShader
+  m_Shader: {fileID: 4800000, guid: ba359b02b1773f245918280a581884cb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -59,12 +59,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1251FF71: 5
-    - Vector1_6FF3D24F: 2
-    - Vector1_78256C52: 0.5
-    - Vector1_A4DE5E39: 5
-    - Vector1_DE7C6FCF: 2
-    - Vector1_F8877CEC: 0.5
+    - Vector1_161F2C15: 0.05
+    - Vector1_3754879B: 1
+    - Vector1_8E438E67: 0.01
+    - Vector1_E94CF483: 5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -86,8 +84,6 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Vector2_25B8ECFC: {r: 3, g: 0, b: 0, a: 0}
-    - Vector2_343B5440: {r: 0, g: 1, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
