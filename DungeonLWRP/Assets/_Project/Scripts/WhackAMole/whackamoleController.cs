@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class whackamoleController : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class whackamoleController : MonoBehaviour {
     List<alienController> allGoblins = new List<alienController>();
     int goblinCount = 0;
     public earthLaser eL;
+    public Image blackOutImage;
 
     PuzzleEvents pE;
 
@@ -51,17 +53,17 @@ public class whackamoleController : MonoBehaviour {
 
     IEnumerator spawnMoles()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(3f);
-            spawnRandomMoles(2);
+            yield return new WaitForSeconds(6f);
+            spawnRandomMoles();
         }
         
         
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(2f);
-            spawnRandomMoles(3);
+            yield return new WaitForSeconds(4f);
+            spawnRandomMoles();
         } 
         yield return new WaitForSeconds(20f);
 
@@ -70,7 +72,7 @@ public class whackamoleController : MonoBehaviour {
         yield return null;
     }
 
-    void spawnRandomMoles(int count)
+    void spawnRandomMoles()
     {
         alienController goblin = Instantiate(goblinPrefab);
         goblin.setWhackAMoleController(this);
@@ -80,12 +82,38 @@ public class whackamoleController : MonoBehaviour {
 
     public void restartPuzzle()
     {
+        StartCoroutine(restartPuzzleRoutine());
+    }
+
+    IEnumerator restartPuzzleRoutine()
+    {
+        float t = 0;
+        //fade to black  
+        while (t < 1)
+        {
+            blackOutImage.color = Color.Lerp(Color.clear, new Color(0, 0, 0, 1), t);
+            t += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
         for (int i = 0; i < allGoblins.Count; i++)
         {
             Destroy(allGoblins[i].gameObject);
         }
-        StopAllCoroutines();
+        allGoblins.Clear();
+        StopCoroutine(playRound());
         StartCoroutine(playRound());
+
+        while (t > 0)
+        {
+            blackOutImage.color = Color.Lerp(Color.clear, new Color(0, 0, 0, 1), t);
+            t -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        //fade to vision
     }
+
+
 
 }

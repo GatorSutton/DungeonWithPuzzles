@@ -11,6 +11,7 @@ public class mazeController : MonoBehaviour
     List<Tile> playerTiles = new List<Tile>();
     List<Vector2> playerDistances = new List<Vector2>();
     float tiltFactor = 4;
+    float tiltSpeed = 10;
 
 
     void Start()
@@ -49,7 +50,7 @@ public class mazeController : MonoBehaviour
         }   
 
        // transform.eulerAngles = new Vector3(averageVector.y * tiltFactor, -averageVector.x * tiltFactor, 0f);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(averageVector.y * tiltFactor -90f, -averageVector.x * tiltFactor, 0f), .1f * tiltFactor);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(averageVector.y * tiltFactor -90f, -averageVector.x * tiltFactor, 0f), Time.deltaTime * tiltSpeed);
     }
 
     Vector2 calculateVector(Tile tile)
