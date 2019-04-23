@@ -17,6 +17,7 @@ public class AnimationController : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown("space"))
         {
+            print("space was pressed");
             animator.enabled = !animator.enabled;
         }
 
@@ -30,6 +31,7 @@ public class AnimationController : MonoBehaviour {
     {
         if (other.tag == "challenge")
         {
+            print("pause");
             animator.enabled = !animator.enabled;
         }
     }

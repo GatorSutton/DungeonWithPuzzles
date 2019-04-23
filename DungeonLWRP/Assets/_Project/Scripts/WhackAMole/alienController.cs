@@ -78,6 +78,7 @@ public class alienController : MonoBehaviour {
 
     void playerLose()
     {
+        Debug.Log("restart puzzle");
         wamC.restartPuzzle();
     }
 
