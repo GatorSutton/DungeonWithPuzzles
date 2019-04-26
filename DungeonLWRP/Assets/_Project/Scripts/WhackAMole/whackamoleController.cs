@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class whackamoleController : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class whackamoleController : MonoBehaviour {
     List<alienController> allGoblins = new List<alienController>();
     int goblinCount = 0;
     public earthLaser eL;
+    public Image image;
 
     PuzzleEvents pE;
 
@@ -80,12 +82,34 @@ public class whackamoleController : MonoBehaviour {
 
     public void restartPuzzle()
     {
+        StartCoroutine(RestartPuzzleSequence());
+    }
+
+    IEnumerator RestartPuzzleSequence()
+    {
+        float t = 0;
+        while(image.color.a < 1)
+        {
+            image.color = Color.Lerp(Color.clear, Color.black, t);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
         for (int i = 0; i < allGoblins.Count; i++)
         {
             Destroy(allGoblins[i].gameObject);
         }
-        StopAllCoroutines();
+        StopCoroutine(playRound());
+
+        while (image.color.a > 0)
+        {
+            image.color = Color.Lerp(Color.clear, Color.black, t);
+            t -= Time.deltaTime;
+            yield return null;
+        }
+
         StartCoroutine(playRound());
+  
     }
 
 }
