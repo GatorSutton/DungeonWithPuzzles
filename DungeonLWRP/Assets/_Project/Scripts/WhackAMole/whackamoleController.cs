@@ -15,6 +15,7 @@ public class whackamoleController : MonoBehaviour {
     int goblinCount = 0;
     public earthLaser eL;
     public Image image;
+    Coroutine myCoroutine;
 
     PuzzleEvents pE;
 
@@ -23,7 +24,7 @@ public class whackamoleController : MonoBehaviour {
     void Start () {
         pE = GetComponent<PuzzleEvents>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
-        StartCoroutine(playRound());
+        myCoroutine  = StartCoroutine(spawnMoles());
     }
 	
 	// Update is called once per frame
@@ -43,26 +44,19 @@ public class whackamoleController : MonoBehaviour {
         goblinCount = allGoblins.Count;
 	}
 
-    //add script in inspector to add strings for different get ready messages
-
-    IEnumerator playRound()
-    {
-        //yield return getReady()
-        yield return spawnMoles();
-    }
 
     IEnumerator spawnMoles()
     {
         for (int i = 0; i < 3; i++)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(4f);
             spawnRandomMoles(2);
         }
         
         
         for (int i = 0; i < 3; i++)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(4f);
             spawnRandomMoles(3);
         } 
         yield return new WaitForSeconds(20f);
@@ -87,6 +81,7 @@ public class whackamoleController : MonoBehaviour {
 
     IEnumerator RestartPuzzleSequence()
     {
+        StopCoroutine(myCoroutine);
         float t = 0;
         while(image.color.a < 1)
         {
@@ -99,7 +94,8 @@ public class whackamoleController : MonoBehaviour {
         {
             Destroy(allGoblins[i].gameObject);
         }
-        StopCoroutine(playRound());
+        allGoblins.Clear();
+
 
         while (image.color.a > 0)
         {
@@ -108,7 +104,7 @@ public class whackamoleController : MonoBehaviour {
             yield return null;
         }
 
-        StartCoroutine(playRound());
+        myCoroutine = StartCoroutine(spawnMoles());
   
     }
 
