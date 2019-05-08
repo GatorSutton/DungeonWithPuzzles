@@ -188,6 +188,7 @@ MonoBehaviour:
   allGoblins: []
   eL: {fileID: 114914938806280872}
   image: {fileID: 114652887965958538}
+  target: {fileID: 114318623469661756, guid: 1983e596740b7ee4285d985fb915f096, type: 2}
 --- !u!114 &114733199332369416
 MonoBehaviour:
   m_ObjectHideFlags: 1

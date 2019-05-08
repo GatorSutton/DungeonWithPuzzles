@@ -88,6 +88,11 @@ public class alienController : MonoBehaviour {
         wamC = wamController;
     }
 
+    private void OnDestroy()
+    {
+
+    }
+
 
 
 }

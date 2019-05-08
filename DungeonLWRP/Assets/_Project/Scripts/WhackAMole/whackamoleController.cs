@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Utility;
 
 public class whackamoleController : MonoBehaviour {
 
@@ -16,6 +17,9 @@ public class whackamoleController : MonoBehaviour {
     public earthLaser eL;
     public Image image;
     Coroutine myCoroutine;
+    public FollowTarget target;
+
+    FollowTarget myTarget;
 
     PuzzleEvents pE;
 
@@ -25,6 +29,7 @@ public class whackamoleController : MonoBehaviour {
         pE = GetComponent<PuzzleEvents>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         myCoroutine  = StartCoroutine(spawnMoles());
+        myTarget = Instantiate(target);
     }
 	
 	// Update is called once per frame
@@ -33,12 +38,15 @@ public class whackamoleController : MonoBehaviour {
         if(goblinCount == 0 && allGoblins.Count == 1)
         {
             eL.setCurrentAlien(allGoblins[0]);
+            myTarget.target = allGoblins[0].transform;
         }
 
         if(allGoblins.Count > 0 && !allGoblins[0].isAlive)
         {
             allGoblins.RemoveAt(0);
-            if (allGoblins.Count != 0) { eL.setCurrentAlien(allGoblins[0]); }
+            if (allGoblins.Count != 0)
+                 eL.setCurrentAlien(allGoblins[0]);
+            myTarget.target = allGoblins[0].transform;
         }
 
         goblinCount = allGoblins.Count;
@@ -95,6 +103,7 @@ public class whackamoleController : MonoBehaviour {
             Destroy(allGoblins[i].gameObject);
         }
         allGoblins.Clear();
+        goblinCount = 0;
 
 
         while (image.color.a > 0)
