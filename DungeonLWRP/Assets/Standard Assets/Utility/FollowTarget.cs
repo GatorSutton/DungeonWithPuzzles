@@ -16,6 +16,10 @@ namespace UnityStandardAssets.Utility
             {
                 transform.position = target.position + offset;
             }
+            else
+            {
+                transform.position = Vector3.zero;
+            }
         }
     }
 }
