@@ -1,39 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  
+using UnityEngine.UI;
+using TMPro;
 
 public class notificationController : MonoBehaviour {
 
-    int hits = 0;
-    Text text;
-    int notesInARow = 0;
+    public TextMeshProUGUI tmProNotification;
 
-	// Use this for initialization
-	void Start () {
-        text = GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    bool gameStarted = false;
 
-    void addToHitsCount()
+    float timer;
+
+    private void Start()
     {
-        hits++;
-        text.text = "Hits: " + hits.ToString();
-        ScoreController.AddScore(100);
+        timer = 0;
+        tmProNotification.text = "GROUP TOGETHER TO BEGIN";
     }
 
-    void OnEnable()
+    private void Update()
     {
-        noteController.OnNoteStrike += addToHitsCount;
-    }
-
-
-    void OnDisable()
-    {
-        noteController.OnNoteStrike -= addToHitsCount;
+        if(gameStarted)
+            timer += Time.deltaTime;
     }
 }

@@ -16,8 +16,11 @@ public class readySwitch : MonoBehaviour {
     public float timeToSync;
     public Slider slider;
 
+    PuzzleEvents PE;
+
     void Awake()
     {
+        PE = GetComponent<PuzzleEvents>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
         notSelectorTiles = floor.getAllTiles();
     }
@@ -70,6 +73,7 @@ public class readySwitch : MonoBehaviour {
     {
         if (time >= timeToSync)
         {
+            PE.PuzzleSolved();
             Destroy(this.gameObject);
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ballLabyrinthController : MonoBehaviour {
 
+    Floor floor;
     //A maze with a ball
     //Maze will rotate based on the position of the players on the board
     public Maze MazePrefab;
@@ -24,6 +25,7 @@ public class ballLabyrinthController : MonoBehaviour {
         //need a coroutine to build the maze, rotate, drop in, spawn ball
         PE = GetComponent<PuzzleEvents>();
         StartCoroutine(spawnMaze(8, 8));
+        floor = GameObject.Find("Floor").GetComponent<Floor>();
     }
 	
 	// Update is called once per frame
@@ -72,6 +74,7 @@ public class ballLabyrinthController : MonoBehaviour {
 
     private void OnDestroy()
     {
+        floor.clearAllTiles();
         PE.PuzzleSolved();
     }
 }

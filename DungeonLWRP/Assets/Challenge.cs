@@ -41,7 +41,8 @@ public class Challenge : MonoBehaviour {
 
     private void OnDisable()
     {
-        PE.OnSolve -= ChallangeComplete;
+        if(PE != null)
+            PE.OnSolve -= ChallangeComplete;
     }
 
     private void ChallangeComplete()

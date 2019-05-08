@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimationController : MonoBehaviour {
 
@@ -24,6 +25,11 @@ public class AnimationController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             animator.speed = (animator.speed == 1) ? animator.speed = 10 : animator.speed = 1;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("BigScene");
         }
 	}
 
