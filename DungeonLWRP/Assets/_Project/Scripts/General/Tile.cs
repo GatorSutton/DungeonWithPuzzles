@@ -12,6 +12,8 @@ public class Tile : MonoBehaviour {
     public Material[] materials;
     public MeshRenderer rend;
 
+    public bool visiblePlayer = true;
+
     bool lastFramePlayerHere = false;
     public bool playerHere = false;
     public States flippedState;
@@ -24,6 +26,7 @@ public class Tile : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rend = GetComponent<MeshRenderer>();
+        visiblePlayer = true;
 	}
 	
 	// Update is called once per frame
@@ -182,7 +185,7 @@ public class Tile : MonoBehaviour {
                 
         }
         
-        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR && myState != States.NOTEBARHIT && myState != States.SHAPEANIMATION)
+        if(playerHere && myState != States.SET && flipped != true && myState != States.SELECTOR && myState != States.NOTEBARHIT && myState != States.SHAPEANIMATION && visiblePlayer)
         {
             rend.material = materials[5];
         }

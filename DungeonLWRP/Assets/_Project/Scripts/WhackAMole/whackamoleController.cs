@@ -28,6 +28,7 @@ public class whackamoleController : MonoBehaviour {
     void Start () {
         pE = GetComponent<PuzzleEvents>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
+        floor.setAllTilesVisibility(false);
         myCoroutine  = StartCoroutine(spawnMoles());
         myTarget = Instantiate(target);
     }
@@ -115,6 +116,11 @@ public class whackamoleController : MonoBehaviour {
 
         myCoroutine = StartCoroutine(spawnMoles());
   
+    }
+
+    private void OnDestroy()
+    {
+        floor.setAllTilesVisibility(true);
     }
 
 }

@@ -207,5 +207,13 @@ public class Floor : MonoBehaviour {
         AC.setMessageOUT(output);
        // AC2.setMessageOUT(output);
     }
+
+    public void setAllTilesVisibility(bool visible)
+    {
+        foreach(Tile tile in tiles)
+        {
+            tile.visiblePlayer = visible;
+        }
+    }
      
 }
